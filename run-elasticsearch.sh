@@ -29,7 +29,7 @@ done
 
 for (( node=1; node<=${NODES-1}; node++ ))
 do
-  port=$((PORT + $node - 1))
+  port=$((9200 + $node - 1))
   port_com=$((9300 + $node - 1))
   if [ "x${MAJOR_VERSION}" == 'x6' ]; then
     docker run \
