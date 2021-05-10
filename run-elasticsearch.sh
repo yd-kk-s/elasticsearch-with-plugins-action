@@ -87,7 +87,7 @@ docker run \
   --retry-connrefused \
   --show-error \
   --silent \
-  http://es1:$PORT
+  http://es1:9200
 
 sleep 10
 
