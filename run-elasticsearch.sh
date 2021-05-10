@@ -41,7 +41,8 @@ do
       --detach \
       --network=elastic \
       --name="es${node}" \
-      docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+      docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION} \
+      /bin/sh -vc "${PLUGIN_INSTALL_CMD} /usr/local/bin/docker-entrypoint.sh"
   elif [ "x${MAJOR_VERSION}" == 'x7' ] || [ "x${MAJOR_VERSION}" == 'x8' ]; then
     docker run \
       --rm \
@@ -61,7 +62,8 @@ do
       --detach \
       --network=elastic \
       --name="es${node}" \
-      docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+      docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION} \
+      /bin/sh -vc "${PLUGIN_INSTALL_CMD} /usr/local/bin/docker-entrypoint.sh"
   fi
 done
 
