@@ -9,6 +9,16 @@ fi
 
 MAJOR_VERSION=`echo ${STACK_VERSION} | cut -c 1`
 
+PLUGIN_INSTALL_CMD=""
+PLUGINS_STR=`echo ${PLUGINS} | sed -e 's/\n/ /g'`
+if [ -n "${PLUGINS_STR}" ]; then
+  ARRAY=(${PLUGINS_STR})
+  for i in "${ARRAY[@]}"
+  do
+    PLUGIN_INSTALL_CMD+="elasticsearch-plugin install --batch ${i} && "
+  done
+fi
+
 docker network create elastic
 
 for (( node=1; node<=${NODES-1}; node++ ))
