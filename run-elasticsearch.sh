@@ -46,8 +46,7 @@ do
       --env "http.port=${port}" \
       --ulimit nofile=65536:65536 \
       --ulimit memlock=-1:-1 \
-      --publish "${port}:${port}" \
-      --publish "${port_com}:${port_com}" \
+      --publish "${port}:9200" \
       --detach \
       --network=elastic \
       --name="es${node}" \
